@@ -1,5 +1,5 @@
-body {
-  background-image: url('Coderen.jpg');
+#grad {
+  background-image: linear-gradient(to right, red , yellow);
 }
 
 h1 {
