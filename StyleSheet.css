@@ -1,7 +1,9 @@
-.diagonal-gradient {
-  background: linear-gradient(to bottom right, blue, pink);
+.gradient {
+  background-image:
+    linear-gradient(
+      red, #f06d06
+    );
 }
-
   
 div {
   background: #466368;
