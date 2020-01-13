@@ -1,3 +1,7 @@
+body {
+  background-color: #c7efff;
+]
+
 h1 {
   color: #000000;
   margin-left: 500px;
@@ -11,8 +15,4 @@ h2 {
 p {
   color: #000000;
   margin-left: 60px;
-}
-
-#grad {
-  background-image: linear-gradient(to bottom right, red, yellow);
 }
