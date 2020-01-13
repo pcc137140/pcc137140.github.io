@@ -1,5 +1,5 @@
-body {
-  background-image: linear-gradient(to right, red , yellow);
+div {
+    background: linear-gradient(to bottom, #33ccff 0%, #ff99cc 100%);
 }
 
 h1 {
