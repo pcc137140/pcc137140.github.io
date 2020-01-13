@@ -12,3 +12,7 @@ p {
   color: #000000;
   margin-left: 60px;
 }
+
+#grad {
+  background-image: linear-gradient(to bottom right, red, yellow);
+}
