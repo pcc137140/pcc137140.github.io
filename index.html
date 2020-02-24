@@ -9,6 +9,157 @@
 		<meta name="viewport" content="width=device-width"> <!-- Dit had te maken met zicht ofzo op kleinere schermen-->
 		<link href="StyleSheet.css" rel="stylesheet" type="text/css">
 		
+		<!-- alles hieronder tot volgende opmerking gaat om PO tekening-->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/processing.js/1.4.8/processing.min.js"></script>
+		<script type="application/processing" data-processing-target="programma1">
+		void setup() {
+  size(1000,600);
+  noStroke();
+  }
+  
+void draw() {
+  background(0, 0, 255 - 255/float(height)*mouseY );
+  maakWolken();
+  maakZon(500, 50, 75);
+  maakZee(0,350,1000,250);
+  maakBoot();
+  maakPalmboom(700, 375, 100, 100);
+  maakEiland();
+  maakSchaduw(75, 75);
+  maakHaai();
+}
+
+void mouseClicked(){
+saveFrame("zonsondergang.jpg");
+}
+
+
+void maakSchaduw(int breedte, int hoogte){
+  fill(255,255-(mouseY*(135.0/200.0)),0);
+  if (mouseY < 350){
+  arc (500, 350, breedte+mouseY/4, hoogte+mouseY/4, 0, PI);
+  } else {
+  arc (500, 350, 254-mouseY/3, 254-mouseY/3, 0, PI);
+  }
+}
+
+void maakPalmboom(int startXcoordinaat, int startYcoordinaat, int hoogte, int breedte){
+  fill(#8B6519);
+  rect(740, 310, 20, -5-mouseY/4);
+  fill(#08582B);
+  arc(755, 310-mouseY/4, 100, 100, PI+QUARTER_PI, PI+HALF_PI, PIE);
+  fill(#0C8341);
+  arc(755, 308-mouseY/4, 100, 100, PI, PI+QUARTER_PI, PIE);
+  fill(#136738);
+  arc(750, 313-mouseY/4, 100, 100, PI+HALF_PI, PI+HALF_PI+QUARTER_PI, PIE);
+  fill(#2E985D);
+  arc(745, 313-mouseY/4, 100, 100, PI+HALF_PI+QUARTER_PI, PI+PI, PIE); 
+}
+
+void maakWolken(){
+    fill(255,255,255);
+  maakWolk(200,80,100,50,1);
+  maakWolk(350,180,50,25,1);
+  maakWolk(800,110,120,60,-1);
+  maakWolk(850,200,60,30,-1);
+  // wolk gemaakt door mnr. Dukers
+}
+
+void maakEiland(){
+  fill(#C68706);
+  arc(750, 350, 150, 80, PI, PI+PI, PIE);
+}
+
+void maakZee(int startXcoordinaat, int startYCoordinaat, int hoogte, int breedte){
+  fill(40,10,180);
+  rect(0,350,1000,250);
+}
+
+void maakZon(int startXCoordinaat, int startYCoordinaat, int diameter) {
+  fill(255,255-(mouseY*(135.0/200.0)),0);
+  circle(startXCoordinaat, startYCoordinaat+mouseY, diameter+mouseY/4);
+}
+
+void maakWolk(int startXCoordinaat, int startYCoordinaat, int breedteWolk, int hoogteWolk, float beweegSnelheid) {
+  ellipse(startXCoordinaat-mouseY*beweegSnelheid, startYCoordinaat, breedteWolk, hoogteWolk);
+  ellipse(startXCoordinaat-20-mouseY*beweegSnelheid, startYCoordinaat, breedteWolk, hoogteWolk);
+  ellipse(startXCoordinaat+10-mouseY*beweegSnelheid, startYCoordinaat+15, breedteWolk, hoogteWolk);
+}
+
+
+void maakBoot(){
+ fill(0, 0, 0);
+ rect(300-mouseY/1.5, 450, 50, 20);
+ triangle(300-mouseY/1.5, 450, 300-mouseY/1.5, 470, 250-mouseY/1.5, 450);
+ triangle(350-mouseY/1.5, 450, 350-mouseY/1.5, 470, 365-mouseY/1.5, 450 );
+ //Rode streep op de boot
+ fill(255, 0, 0);
+ rect(300-mouseY/1.5, 455, 50, 5);
+ triangle(300-mouseY/1.5, 455, 300-mouseY/1.5, 460, 260-mouseY/1.5, 455 );
+ triangle(350-mouseY/1.5, 455, 350-mouseY/1.5, 460, 362-mouseY/1.5, 455 );
+ //Kajuit
+ fill(128, 48, 10);
+ rect(320-mouseY/1.5, 435, 30, 15);
+ //Stoompijp
+ fill(0, 0, 0);
+ rect(330-mouseY/1.5, 420, 10, 15);
+ rect(290-mouseY/1.5, 420, 10, 30);
+ fill(255, 0, 0);
+ rect(330-mouseY/1.5, 425, 10, 5);
+ rect(290-mouseY/1.5, 425, 10, 5);
+ // Boot gemaakt door mnr. Dukers
+ // Boot gerepareerd door mij
+}
+
+void maakHaai(){
+if (mousePressed == true) {
+ noStroke();//cuerpo
+  fill (54,192,255); //azul
+  ellipse(808-mouseY/4,484-mouseY/10, 200, 100);
+  triangle(721-mouseY/4,458-mouseY/10,695-mouseY/4,482-mouseY/10,721-mouseY/4,510-mouseY/10);
+  
+  
+    noStroke();//cola
+    fill (54,192,255); //azul
+    triangle(888-mouseY/4,464-mouseY/10,942-mouseY/4,430-mouseY/10,905-mouseY/4,487-mouseY/10);
+      triangle(905-mouseY/4,487-mouseY/10,918-mouseY/4,463-mouseY/10,935-mouseY/4,510-mouseY/10);
+  
+    noStroke();//aletas inferiores
+ fill (54,192,255); //azul
+    triangle(779-mouseY/4,524-mouseY/10,804-mouseY/4,524-mouseY/10,804-mouseY/4,548-mouseY/10);
+  triangle(800-mouseY/4,526-mouseY/10,838-mouseY/4,513-mouseY/10,845-mouseY/4,550-mouseY/10);
+  
+    noStroke();//aleta arriba
+ fill (54,192,255); //azul
+    triangle(791-mouseY/4,536-mouseY/10,825-mouseY/4,436-mouseY/10,820-mouseY/4,392-mouseY/10);
+  
+  noStroke();//ojo
+ fill (255); //blanco
+  ellipse(740-mouseY/4,470-mouseY/10, 20, 20);
+  fill (255,0,0); //rood
+  ellipse(740-mouseY/4,470-mouseY/10, 10, 10);
+  
+    noStroke();//boca
+  fill (0); //negro
+  triangle(705-mouseY/4, 521-mouseY/10 ,770-mouseY/4, 491-mouseY/10, 752-mouseY/4, 525-mouseY/10);
+  
+  
+    noStroke();//dientes
+  fill (255); //blanco
+  triangle(723-mouseY/4,511-mouseY/10,735-mouseY/4,507-mouseY/10,737-mouseY/4,518-mouseY/10);
+  triangle(735-mouseY/4,507-mouseY/10,746-mouseY/4,501-mouseY/10,748-mouseY/4,511-mouseY/10);
+  triangle(746-mouseY/4,501-mouseY/10,756-mouseY/4,495-mouseY/10,758-mouseY/4,503-mouseY/10);
+  triangle(752-mouseY/4,525-mouseY/10,756-mouseY/4,516-mouseY/10,745-mouseY/4,517-mouseY/10);
+  triangle(756-mouseY/4,516-mouseY/10,760-mouseY/4,508-mouseY/10,753-mouseY/4,506-mouseY/10);
+  // Haai gekopieerd, gemaakt door "isabela"
+  // Coordinaten zelf veranderd en beweging toegevoegd
+  // Oogkleur verandert
+  // https://www.openprocessing.org/sketch/589667/
+}
+}
+		</script>
+<!-- Einde tekening ding-->
+		
 		<style>
 body {
   font-family: "Lato", sans-serif;
@@ -147,5 +298,8 @@ function closeNav() {
 	<input type="submit" value="Send">
 	<input type="reset" value="Reset">
 </form>
+		
+	<canvas id="programma1"></canvas>
+		
 	</body>
 </html>
